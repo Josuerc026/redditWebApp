@@ -1,0 +1,182 @@
+
+html,body{
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #efefef;
+}
+
+div#overlay{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background: rgba(0,0,0,0.6);
+  top: 0;
+  display: none;
+  z-index: 999;
+  
+  
+}
+div#overlay.on{
+  display: block;
+}
+
+
+
+div#modal{
+  width: 750px;
+  height: 409px;
+  position: absolute;
+  background: #fff;
+  box-shadow: 2px 2px 16px rgba(0,0,0,0.7);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+  
+}
+
+div#reddit-comments{
+  overflow: auto;
+  height: 380px;
+  word-wrap: break-word;
+  
+  
+  
+}
+div#reddit-comments p {
+      padding: 15px;
+      margin: 0;
+  }
+
+div#reddit-comments p:nth-of-type(even){
+      background: #efefef;
+  }
+  
+
+div#modal.hidden{
+  display: none;
+  
+}
+
+div#btn-container{  
+  background:  darkorange;
+}
+
+button.close-btn{
+  padding: 5px;
+}
+
+
+div#searchfield{
+  width: 100%;
+  padding: 12px 0px 12px 0;
+  background: #3367D6;
+  position: fixed;
+  top: 0;
+  
+}
+form#domainform{
+  width: 750px;
+  margin: 0 auto;
+  color: #fff;
+  
+}
+form#domainform input[type=text]{
+  width: 300px;
+  padding: 13px;
+  background: rgba(0,0,0,0.4);
+  border: none;
+  color: #fff;
+  outline: none;
+  font-size: 14px;
+  margin-right: 5px;
+ 
+}
+div#container-wrapper{
+  width: 100%;
+  height: 100%;
+}
+
+div#container{
+  width: 750px;
+  margin: 0 auto;
+  margin-top: 100px;
+ 
+}
+
+div#container.group:after{
+  content: "";
+  display: table;
+  clear: both;
+}
+aside#menu-bar{
+  width: 150px;
+  height: 200px;
+  padding: 15px;
+  float: left;
+  position: fixed;
+  box-shadow: 2px 2px 8px rgba(0,0,0,0.4);
+  font-size: 13px;
+  background: #fff;
+}
+aside#menu-bar p{
+  padding: 0;
+  margin: 0;
+}
+aside#menu-bar ul{
+  margin: 0;
+  padding: 0;
+  padding-top: 10px;
+}
+aside#menu-bar ul li{
+  list-style-type: none;
+  margin: 0;
+}
+div#content{
+  width: 550px;
+  float: right;
+}
+div#content ul.linkList{
+  padding:0px 8px 8px 8px;
+  margin: 0px;
+}
+
+div#content li.listItem{
+  padding:15px;
+  margin-bottom: 8px;
+  list-style-type: none;
+  box-shadow: 2px 2px 8px rgba(0,0,0,0.4);
+  background-color: #fff;
+  
+}
+div#content li.listItem h2{
+  font-size: 18px;
+}
+div#content li.listItem button.commentBtn{
+  border: none;
+  border: 2px solid #ED4337;
+  background: none;
+  padding: 5px;
+  color: #ED4337;
+  font-weight: 700;
+  margin-right: 5px;
+  cursor: pointer;
+  transition: 0.4s;
+  
+}
+div#content li.listItem button.commentBtn:hover{
+   background: #ED4337;
+   color: #fff;
+}
+div#content img.thumbimg{
+  width: 100px;
+  transition: 0.4s;
+}
+div#content img.thumbimg:hover{
+  width: 150px;
+}
+
+div#modal.hide{
+  display: none;
+}

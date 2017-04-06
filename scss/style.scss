@@ -1,0 +1,128 @@
+$search-bar-background: #3367D6;
+$standard-font: sans-serif;
+$content-search-width: 600px;
+$close-btn-container-background: darkorange;
+
+
+
+html,body{
+  font-family: $standard-font;
+  margin: 0;
+  padding: 0;
+}
+
+div#container.modal-on{
+ position: fixed;
+ width: 100%;
+}
+
+div#modal{
+  width: 600px;
+  height: 309px;
+  position: absolute;
+  background: #fff;
+  box-shadow: 2px 2px 16px rgba(0,0,0,0.7);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 99;
+  
+}
+
+div#reddit-comments{
+  overflow: auto;
+  height: 280px;
+  word-wrap: break-word;
+  
+  p {
+      padding: 15px;
+      margin: 0;
+  }
+  
+  p:nth-of-type(even){
+      background: #efefef;
+  }
+  
+}
+
+
+div#modal.hidden{
+  display: none;
+  
+}
+
+div#btn-container{  
+  background: $close-btn-container-background;
+}
+
+button.close-btn{
+  padding: 5px;
+}
+
+div#overlay{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background: rgba(0,0,0,0.6);
+  top: 0;
+  z-index: 98;
+  display: none;
+  
+}
+div#overlay.on{
+  display: block;
+}
+
+div#searchfield{
+  width: 100%;
+  padding: 12px;
+  background: $search-bar-background;
+  position: fixed;
+  top: 0;
+  //box-shadow: 2px 2px 8px rgba(0,0,0,0.95);
+}
+form#domainform{
+  width: $content-search-width;
+  margin: 0 auto;
+  
+}
+form#domainform input[type=text]{
+  width: 100%;
+  padding: 13px;
+  background: rgba(0,0,0,0.4);
+  border: none;
+  color: #fff;
+  outline: none;
+  font-size: 14px;
+ 
+}
+
+div#content{
+  width: $content-search-width;
+  margin: 0 auto;
+  margin-top: 100px;
+}
+
+ul.linkList{
+  padding:8px;
+  margin: 0px;
+}
+
+li.listItem{
+  padding:15px;
+  list-style-type: none;
+}
+img.thumbimg{
+  width: 100px;
+  transition: 0.4s;
+}
+img.thumbimg:hover{
+  width: 150px;
+}
+li.listItem:nth-child(even){
+    background-color: #eee;
+}
+
+div#modal.hide{
+  display: none;
+}

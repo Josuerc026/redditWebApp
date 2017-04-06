@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+  <head>
+  <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    <!---COMMENT OVERLAY AND MODAL -->
+  
+  
+ 
+    
+    <div id="overlay">
+    
+    <div id="modal" class="hidden">
+    <div id="btn-container">
+      <button value="close" class="close-btn"> 
+       X
+       </button>
+      <span>Top Level Comments</span>
+      
+    </div>
+      
+      <div id="reddit-comments">
+      
+      
+      </div>
+     
+    </div>
+    </div>
+    
+   <!---//////////////////////-->
+    
+     
+   
+    
+    
+    <div id="searchfield">
+    
+      <form id="domainform" name="domainform">
+        <input type="text" class="search" id="s" name="s" placeholder="&#xf002 Search" style="font-family:Arial, FontAwesome">
+              sort by:
+                      <select id="sort">
+                         <option value="relevance">Relevance</option>
+                         <option value="top">Top</option>
+                      </select>
+            links from:
+                      <select id="time">
+                         <option value="all">all time</option>
+                         <option value="hour">24 hours</option>
+                         <option value="week">past week</option>
+                      </select>
+      </form>
+    </div>
+    
+  <div id="container-wrapper">
+  <div id="container" class="group">
+  
+  <aside id="menu-bar">
+    <p>
+      Search
+       <ul>
+         <li><input type="radio" name="subreddit" value="popular">Popular</li>
+         <!---<li><input type="radio" name="subreddit" value="askreddit">AskReddit</li>
+         <li><input type="radio" name="subreddit" value="videos">Videos</li>
+         <li><input type="radio" name="subreddit" value="funny">Funny</li>--->
+         
+         
+       </ul>
+    </p>
+     
+  </aside>
+     
+     <div id="content">
+      <h1>
+           Welcome to Reddit!
+       </h1>
+      
+    </div>
+          
+  
+  </div>
+  
+  </div>
+    
+  
+    
+    
+   
+   
+   <script
+  src="https://code.jquery.com/jquery-3.2.1.js"
+  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+  crossorigin="anonymous"></script>
+  <script src="js/app.js"></script>
+  </body>
+
+</html>
+
