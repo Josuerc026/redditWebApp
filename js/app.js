@@ -1,6 +1,16 @@
 
-$('#sort,#time').change(function() {
+$("#sort,#time").change(function() {
+        
     $(this).closest('form').submit();
+
+});
+
+$("input[name='subreddit']").change(function(){
+    
+  
+   $(this).parents("aside").parents().prev().find("form").submit();
+   
+   
 });
 
 $('#domainform').on('submit', function (event){
@@ -12,14 +22,14 @@ $('#domainform').on('submit', function (event){
     var query = $('#s').val();
     var sort = $('#sort').val();
     var time = $('#time').val();
-               
-  
+    var subLink = $("input[name='subreddit']").val();
+    console.log(subLink);
+   
     var requrl = "https://www.reddit.com/search.json?q=";
     var sortParameter = "&sort=" + sort;
     var timeParameter = "&t=" + time;
     
     var fullurl = requrl + query + sortParameter + timeParameter;
-    console.log(fullurl);
     
      $.getJSON(fullurl, function(json){
      
@@ -36,7 +46,6 @@ $('#domainform').on('submit', function (event){
     var subrdt    = "/r/"+obj.subreddit;
     var redditurl = "https://www.reddit.com"+obj.permalink;
     var commenturl = "https://www.reddit.com"+obj.permalink.split("?")[0];
-    console.log(commenturl);
     var subrdturl = "https://www.reddit.com/r/"+obj.subreddit+"/";
     var exturl    = obj.url;
 	
