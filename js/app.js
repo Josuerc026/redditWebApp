@@ -53,7 +53,7 @@ $('#domainform, #leftform').on('submit', function (event){
     html += '<li class="clearfix listItem">\n';
     html += '<a href="'+exturl+'" target="_blank"><img src="'+thumb+'" class="thumbimg"></a>';
     html += '<div class="linkdetails"><h2>'+title+'</h2>\n';
-    html += '<span>'+votes+'</span><p class="subrdt">posted to <a href="'+subrdturl+'" target="_blank">'+subrdt+'</a> '+timeago+'</p>';
+    html += '<span>'+votes+' votes</span><p class="subrdt">posted to <a href="'+subrdturl+'" target="_blank">'+subrdt+'</a> '+timeago+'</p>';
     html += '<p><button value="'+commenturl+'" class="commentBtn">comments</button>\n<a href="'+exturl+'" class="blubtn" target="_blank">visit link</a> - <a href="'+redditurl+'" class="blubtn" target="_blank">view on reddit</a></p>';
     html += '</div></li>\n';
       
@@ -182,7 +182,8 @@ $('#domainform, #leftform').on('submit', function (event){
          )     
        }  
     )
- closeButton.onclick = removeComments;
+ 
+  closeButton.onclick = removeComments;
  
  }
   

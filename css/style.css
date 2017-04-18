@@ -18,7 +18,7 @@ div#overlay.on {
 
 div#modal {
   width: 750px;
-  height: 404px;
+  height: 418px;
   position: absolute;
   background: #fff;
   box-shadow: 2px 2px 16px rgba(0, 0, 0, 0.7);
@@ -42,10 +42,12 @@ div#modal.hidden {
   display: none; }
 
 div#btn-container {
-  background: darkorange; }
+  background: darkorange;
+  padding: 8px; }
 
-button.close-btn {
-  padding: 5px; }
+div#btn-container button.close-btn {
+  float: right;
+  cursor: pointer; }
 
 div#searchfield {
   width: 100%;
@@ -120,14 +122,39 @@ aside#menu-bar ul {
 aside#menu-bar ul li {
   margin: 0; }
 
-aside form#leftform li {
+aside#menu-bar form#leftform li {
   list-style-type: none; }
 
-aside ul#recent-searches {
-  list-style-type: bullets; }
+aside#menu-bar ul#recent-searches {
+  width: 150px;
+  max-height: 250px;
+  overflow-x: scroll;
+  margin: 0;
+  margin-left: -4px; }
 
-aside ul#recent-searches li span.recent-tags {
+aside#menu-bar ul#recent-searches li {
+  list-style-type: none;
+  margin-bottom: 5px;
+  border-bottom: 2px solid darkgray; }
+
+aside#menu-bar ul#recent-searches li span.recent-tags {
   font-weight: 700; }
+
+aside#menu-bar button#clear-all-recents {
+  border: none;
+  border: 2px solid #ED4337;
+  background: none;
+  padding: 5px;
+  color: #ED4337;
+  font-weight: 700;
+  margin-right: 5px;
+  cursor: pointer;
+  transition: 0.4s;
+  width: 100%; }
+
+aside#menu-bar button#clear-all-recents:hover {
+  color: #fff;
+  background: #ED4337; }
 
 div#content {
   width: 550px;
