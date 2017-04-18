@@ -37,7 +37,7 @@
     <div id="searchfield">
     
       <form id="domainform" name="domainform">
-        <input type="text" class="search" id="s" name="s" placeholder="&#xf002 Search" style="font-family:Arial, FontAwesome">
+        <input type="text" class="search s" name="s" placeholder="&#xf002 Search" style="font-family:Arial, FontAwesome">
               sort by:
                       <select id="sort">
                          <option value="relevance">Relevance</option>
@@ -50,30 +50,36 @@
                          <option value="week">past week</option>
                       </select>
       </form>
+      <span style="color: #fff;"></span>
     </div>
     
   <div id="container-wrapper">
   <div id="container" class="group">
   
   <aside id="menu-bar">
-    <p>
-      Search
+    <p>Type of Search</p>
        <ul>
-         <li><input type="radio" name="subreddit" value="popular">Popular</li>
-         <li><input type="radio" name="subreddit" value="askreddit">AskReddit</li>
-         <li><input type="radio" name="subreddit" value="videos">Videos</li>
-         <li><input type="radio" name="subreddit" value="funny">Funny</li>
-         
-         
+        <form id="leftform" name="leftform">
+          <li><input type="radio" name="searchOptions" value="global" checked>Global</li>
+        </form>
        </ul>
+    <p>
+      My Recent Searches
     </p>
-     
+    <!--<form class="recent-search-form" name="recentForm">-->
+       <ul id="recent-searches">
+      
+       </ul>
+    <button id="clear-all-recents">
+      Clear all
+    </button>
+    <!---</form>-->
   </aside>
      
      <div id="content">
      <ul>
         <li class="listItem"><h3>
-         Welcome to Reddit! 
+         JSON Test 
           </h3></li>
        </ul>
       
@@ -93,8 +99,7 @@
   src="https://code.jquery.com/jquery-3.2.1.js"
   integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
   crossorigin="anonymous"></script>
-  <script src="js/app.js"></script>
+  <script src="app.js"></script>
   </body>
 
 </html>
-

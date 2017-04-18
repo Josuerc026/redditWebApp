@@ -18,7 +18,7 @@ div#overlay.on {
 
 div#modal {
   width: 750px;
-  height: 409px;
+  height: 404px;
   position: absolute;
   background: #fff;
   box-shadow: 2px 2px 16px rgba(0, 0, 0, 0.7);
@@ -30,9 +30,10 @@ div#reddit-comments {
   overflow: auto;
   height: 380px;
   word-wrap: break-word; }
-  div#reddit-comments p {
-    padding: 15px;
-    margin: 0; }
+
+div#reddit-comments p {
+  padding: 15px;
+  margin: 0; }
 
 div#reddit-comments p:nth-of-type(even) {
   background: #efefef; }
@@ -98,7 +99,7 @@ div#container.group:after {
 
 aside#menu-bar {
   width: 150px;
-  height: 200px;
+  min-height: 125px;
   padding: 15px;
   float: left;
   position: fixed;
@@ -111,13 +112,22 @@ aside#menu-bar p {
   margin: 0; }
 
 aside#menu-bar ul {
-  margin: 0;
-  padding: 0;
-  padding-top: 10px; }
+  margin: 8px;
+  padding: 5px;
+  padding-top: 10px;
+  margin-bottom: 10px; }
 
 aside#menu-bar ul li {
-  list-style-type: none;
   margin: 0; }
+
+aside form#leftform li {
+  list-style-type: none; }
+
+aside ul#recent-searches {
+  list-style-type: bullets; }
+
+aside ul#recent-searches li span.recent-tags {
+  font-weight: 700; }
 
 div#content {
   width: 550px;
@@ -135,7 +145,8 @@ div#content li.listItem {
   background-color: #fff; }
 
 div#content li.listItem h2 {
-  font-size: 18px; }
+  font-size: 18px;
+  margin-top: 0px; }
 
 div#content li.listItem button.commentBtn {
   border: none;
@@ -154,10 +165,15 @@ div#content li.listItem button.commentBtn:hover {
 
 div#content img.thumbimg {
   width: 100px;
-  transition: 0.4s; }
+  transition: 0.4s;
+  float: left; }
 
-div#content img.thumbimg:hover {
-  width: 150px; }
+/*div#content img.thumbimg:hover {
+  width: 150px; }*/
+div#content div.linkdetails {
+  width: 300px;
+  display: inline-block;
+  margin-left: 20px; }
 
 div#modal.hide {
   display: none; }

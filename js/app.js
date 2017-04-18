@@ -1,30 +1,24 @@
-
 $("#sort,#time").change(function() {
         
     $(this).closest('form').submit();
 
 });
 
-$("input[name='subreddit']").change(function(){
-    
-  
-   $(this).parents("aside").parents().prev().find("form").submit();
-   
-   
-});
 
-$('#domainform').on('submit', function (event){
+$('#domainform, #leftform').on('submit', function (event){
    
     event.preventDefault();
+  
+    console.log(event);
     
     $('#content').html('<center><img src="https://i.stack.imgur.com/MnyxU.gif" alt="loading..." width="50"></center>');
     
-    var query = $('#s').val();
+    var query = $('.s').val();
     var sort = $('#sort').val();
     var time = $('#time').val();
-    var subLink = $("input[name='subreddit']").val();
-    console.log(subLink);
-   
+  
+    ///////// User Search Query String  URL /////////////////////////////
+  
     var requrl = "https://www.reddit.com/search.json?q=";
     var sortParameter = "&sort=" + sort;
     var timeParameter = "&t=" + time;
@@ -34,12 +28,12 @@ $('#domainform').on('submit', function (event){
      $.getJSON(fullurl, function(json){
      
     var listing = json.data.children;
-    var html = '<ul class="linkList">\n';
+    var html = '<h3>You searched: "'+ query + '" </h3><ul class="linkList">\n';
     
     for(var i=0, l=listing.length; i<l; i++) {
     var obj = listing[i].data;
-
-    var votes     = obj.score;
+    
+    var votes     = scoreFormat(obj.score);
     var title     = obj.title;
     var subtime   = obj.created_utc;
     var thumb     = obj.thumbnail;
@@ -62,9 +56,13 @@ $('#domainform').on('submit', function (event){
     html += '<span>'+votes+'</span><p class="subrdt">posted to <a href="'+subrdturl+'" target="_blank">'+subrdt+'</a> '+timeago+'</p>';
     html += '<p><button value="'+commenturl+'" class="commentBtn">comments</button>\n<a href="'+exturl+'" class="blubtn" target="_blank">visit link</a> - <a href="'+redditurl+'" class="blubtn" target="_blank">view on reddit</a></p>';
     html += '</div></li>\n';
+      
+   
+      
   } // end for{} loop
   
   htmlOutput(html);
+  recentSearch(query, sort, time);
   
   var redditLink = document.getElementsByClassName("commentBtn");
   
@@ -82,6 +80,33 @@ $('#domainform').on('submit', function (event){
     
     $('#content').html(html);
     //console.log(html);
+  }
+
+  function recentSearch(querystring, sort, time){
+    
+    var list = document.getElementById("recent-searches");
+    var listItem = document.createElement("li");
+    
+    
+    listItem.innerHTML = "<span class='recent-tags'>" + querystring + "</span> sorted by <span class='recent-tags'>"+ sort + "</span> by <span class='recent-tags'>" + time + "</span>";
+    list.prepend(listItem);
+    
+    var recentListItems = list.innerHTML;
+    
+    //set recent items in localStorage
+    localStorage.recents = recentListItems;
+    
+  }
+
+
+//If recent items are found in localStorage, append to the recents list
+  if(localStorage.recents){
+    var list = document.getElementById("recent-searches");
+    list.innerHTML = localStorage.recents;
+  }
+
+  function scoreFormat(num) {
+    return num > 999 ? (num/1000).toFixed(1) + 'k' : num
   }
   
   /**
@@ -124,7 +149,7 @@ $('#domainform').on('submit', function (event){
     }
     return Math.floor(seconds) + " seconds ago";
   }
-  
+
 
   
   function commentModal(event){
@@ -180,4 +205,13 @@ $('#domainform').on('submit', function (event){
             comments.removeChild(comments.firstChild);
        }
   }
+
+document.getElementById("clear-all-recents").addEventListener("click",function(){
+  var list = document.getElementById("recent-searches");
+  while (list.firstChild){
+    list.removeChild(list.firstChild);
+  }
+  window.localStorage.clear();
   
+});
+     
