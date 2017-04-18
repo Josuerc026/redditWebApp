@@ -77,7 +77,9 @@ form#domainform input[type=text] {
   color: #fff;
   outline: none;
   font-size: 14px;
-  margin-right: 5px; }
+  margin-right: 5px; 
+  border-radius: 10px;
+}
 
 form#domainform select {
   border: none;
@@ -139,6 +141,7 @@ aside#menu-bar ul#recent-searches{
     width: 150px;
     max-height: 250px;
     overflow-x: scroll;
+    word-wrap: break-word; 
     margin: 0;
     margin-left: -4px;
 }
