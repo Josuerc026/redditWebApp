@@ -209,7 +209,9 @@ $('#domainform, #leftform').on('submit', function (event){
   }
 
 document.getElementById("clear-all-recents").addEventListener("click",function(){
+     
   var list = document.getElementById("recent-searches");
+
   while (list.firstChild){
     list.removeChild(list.firstChild);
   }
