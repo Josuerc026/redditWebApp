@@ -1,6 +1,7 @@
 <!doctype html>
 <html>
   <head>
+      <title>Reddit Mini Application</title>
   <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
@@ -38,7 +39,7 @@
     <div id="searchfield">
     
       <form id="domainform" name="domainform">
-        <input type="text" class="search s" name="s" placeholder="&#xf002 Search" style="font-family:Arial, FontAwesome">
+        <i class="fa fa-reddit fa-2x" aria-hidden="true"></i> <input type="text" class="search s" name="s" placeholder="&#xf002 Search" style="font-family:Arial, FontAwesome">
               sort by:
                       <select id="sort">
                          <option value="relevance">Relevance</option>
@@ -58,12 +59,6 @@
   <div id="container" class="group">
   
   <aside id="menu-bar">
-    <p>Type of Search</p>
-       <ul>
-        <form id="leftform" name="leftform">
-          <li><input type="radio" name="searchOptions" value="global" checked>Global</li>
-        </form>
-       </ul>
     <p>
       My Recent Searches
     </p>
@@ -72,7 +67,7 @@
       
        </ul>
     <button id="clear-all-recents">
-      Clear All
+      <i class="fa fa-trash-o fa-lg" aria-hidden="true"></i>
     </button>
     <!---</form>-->
   </aside>
@@ -80,7 +75,7 @@
      <div id="content">
      <ul>
         <li class="listItem"><h3>
-         JSON Test 
+         Reddit Mini - version 1.0.0
           </h3></li>
        </ul>
       

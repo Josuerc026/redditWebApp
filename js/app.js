@@ -28,7 +28,7 @@ $('#domainform, #leftform').on('submit', function (event){
      $.getJSON(fullurl, function(json){
      
     var listing = json.data.children;
-    var html = '<h3>You searched: "'+ query + '" </h3><ul class="linkList">\n';
+    var content = '<h3>You searched: "'+ query + '" </h3><ul class="linkList">\n';
     
     for(var i=0, l=listing.length; i<l; i++) {
     var obj = listing[i].data;
@@ -46,22 +46,22 @@ $('#domainform, #leftform').on('submit', function (event){
     var timeago = timeSince(subtime);
 
     if(obj.thumbnail === 'default' || obj.thumbnail === 'nsfw' || obj.thumbnail === '' || obj.thumbnail == "self"){
-      thumb = 'http://icons.iconarchive.com/icons/martz90/circle-addon1/256/reddit-icon.png';
+      thumb = '/imgs/icon.png';
 
     }
   
-    html += '<li class="clearfix listItem">\n';
-    html += '<a href="'+exturl+'" target="_blank"><img src="'+thumb+'" class="thumbimg"></a>';
-    html += '<div class="linkdetails"><h2>'+title+'</h2>\n';
-    html += '<span>'+votes+' votes</span><p class="subrdt">posted to <a href="'+subrdturl+'" target="_blank">'+subrdt+'</a> '+timeago+'</p>';
-    html += '<p><button value="'+commenturl+'" class="commentBtn">comments</button>\n<a href="'+exturl+'" class="blubtn" target="_blank">visit link</a> - <a href="'+redditurl+'" class="blubtn" target="_blank">view on reddit</a></p>';
-    html += '</div></li>\n';
+    content += '<li class="clearfix listItem">\n';
+    content += '<a href="'+exturl+'" target="_blank"><img src="'+thumb+'" class="thumbimg"></a>';
+    content += '<div class="linkdetails"><h2>'+title+'</h2>\n';
+    content += '<span>'+votes+' votes</span><p class="subrdt">posted to <a href="'+subrdturl+'" target="_blank">'+subrdt+'</a> '+timeago+'</p>';
+    content += '<p><button value="'+commenturl+'" class="commentBtn">comments</button>\n<a href="'+exturl+'" class="blubtn" target="_blank">visit link</a> - <a href="'+redditurl+'" class="blubtn" target="_blank">view on reddit</a></p>';
+    content += '</div></li>\n';
       
    
       
   } // end for{} loop
   
-  htmlOutput(html);
+  contentOutput(content);
   recentSearch(query, sort, time);
   
   var redditLink = document.getElementsByClassName("commentBtn");
@@ -75,10 +75,10 @@ $('#domainform, #leftform').on('submit', function (event){
 }); // end .on(submit) listener
 
 
-  function htmlOutput(html) {
-    html += '</ul>';
+  function contentOutput(content) {
+    content += '</ul>';
     
-    $('#content').html(html);
+    $('#content').html(content);
     //console.log(html);
   }
 
@@ -187,6 +187,7 @@ $('#domainform, #leftform').on('submit', function (event){
  
  }
   
+//Remove comments from modal container
   function removeComments(event){
   
   
