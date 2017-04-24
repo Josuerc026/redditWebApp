@@ -166,9 +166,10 @@ aside#menu-bar ul#recent-searches{
     width: 150px;
     max-height: 250px;
     overflow-y: scroll;
+    overflow-x: hidden;
     word-wrap: break-word; 
     margin: 0;
-    margin-left: -4px;
+ margin: 2px 0px 0px -4px;
 }
 
 
