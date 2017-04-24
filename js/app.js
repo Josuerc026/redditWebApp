@@ -69,7 +69,7 @@ $('#domainform, #leftform').on('submit', function (event){
     
     //if no default thumbnail cannot be found, use the one in the imgs folder
     if(obj.thumbnail === 'default' || obj.thumbnail === 'nsfw' || obj.thumbnail === '' || obj.thumbnail == "self"){
-      thumb = '/imgs/icon.png';
+      thumb = 'imgs/icon.png';
 
     }
         
