@@ -9,7 +9,7 @@ $('#domainform, #leftform').on('submit', function (event){
    
     event.preventDefault();
     
-    $('#content').html('<center><img src="https://i.stack.imgur.com/MnyxU.gif" alt="loading..." width="50"></center>');
+    $('#content').html('<center><img src="imgs/loading.gif" alt="loading..." width="50"></center>');
     
     
     var query = $('#query').val();
