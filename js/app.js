@@ -8,12 +8,16 @@ $("#sort,#time").change(function() {
 $('#domainform, #leftform').on('submit', function (event){
    
     event.preventDefault();
-  
-    console.log(event);
     
     $('#content').html('<center><img src="https://i.stack.imgur.com/MnyxU.gif" alt="loading..." width="50"></center>');
     
-    var query = $('.s').val();
+    
+    var query = $('#query').val();
+    
+    if(query === " " || query === "" ){
+        document.getElementById("content").innerHTML = "<h3>Looks like you forgot to enter your search query.<br> Please try again.</h3>";
+    }
+    
     var sort = $('#sort').val();
     var time = $('#time').val();
   
@@ -25,31 +29,51 @@ $('#domainform, #leftform').on('submit', function (event){
     
     var fullurl = requrl + query + sortParameter + timeParameter;
     
-     $.getJSON(fullurl, function(json){
-     
-    var listing = json.data.children;
-    var content = '<h3>You searched: "'+ query + '" </h3><ul class="linkList">\n';
     
+    //Initiate jQuery getJSON function 
+    
+    $.getJSON(fullurl, function(json){
+     
+    //get all data objects and set them as a variable named listing
+    var listing = json.data.children;
+    
+    //begin content string for reddit listings     
+    var content = '<h3>You searched: "'+ query + '" </h3><ul class="linkList">\n';
+        
+    //If listing object is 0 then display the following message     
+    if(listing.length === 0){
+          var content = '<h3>Uh-oh, nothing was found for "'+ query + '".<br> Please try again.</h3>\n';
+         
+    }
+    
+    //loop through all object values from data
     for(var i=0, l=listing.length; i<l; i++) {
+    
+    //set listing variable as object
     var obj = listing[i].data;
     
+    //set each property to their own specific variavle
     var votes     = scoreFormat(obj.score);
     var title     = obj.title;
     var subtime   = obj.created_utc;
     var thumb     = obj.thumbnail;
     var subrdt    = "/r/"+obj.subreddit;
     var redditurl = "https://www.reddit.com"+obj.permalink;
+    //removed all characters after the query string - ? - in order parse json comments
     var commenturl = "https://www.reddit.com"+obj.permalink.split("?")[0];
     var subrdturl = "https://www.reddit.com/r/"+obj.subreddit+"/";
     var exturl    = obj.url;
 	
+    //pass subtime variable through timeSince function in order to receive readable date 
     var timeago = timeSince(subtime);
-
+    
+    //if no default thumbnail cannot be found, use the one in the imgs folder
     if(obj.thumbnail === 'default' || obj.thumbnail === 'nsfw' || obj.thumbnail === '' || obj.thumbnail == "self"){
       thumb = '/imgs/icon.png';
 
     }
-  
+        
+    //concatenate content string with the following   
     content += '<li class="clearfix listItem">\n';
     content += '<a href="'+exturl+'" target="_blank"><img src="'+thumb+'" class="thumbimg"></a>';
     content += '<div class="linkdetails"><h2>'+title+'</h2>\n';
@@ -59,20 +83,32 @@ $('#domainform, #leftform').on('submit', function (event){
       
    
       
-  } // end for{} loop
+  } // end for{} loop 
   
+  //outputs the html
   contentOutput(content);
+  //outputs query string to recent search bar
   recentSearch(query, sort, time);
+        
+  //the following loops through the comment buttons and triggers the comment Modal when the click event is fired
   
   var redditLink = document.getElementsByClassName("commentBtn");
   
   for(var i = 0; i < redditLink.length; i++){
      redditLink[i].addEventListener("click", commentModal, false);
     }
-     
+        
   
-  }); // end getJSON()
-}); // end .on(submit) listener
+  })
+    
+  //If server request fails, push out the following error response
+    
+ .fail(function(jqxhr){
+         
+  document.getElementById("content").html("<h3>The following error has been received from the server: <br>" + jqxhr.responseText + "</h3><br>Please try again.");
+         
+  });
+});
 
 
   function contentOutput(content) {
@@ -105,14 +141,11 @@ $('#domainform, #leftform').on('submit', function (event){
     list.innerHTML = localStorage.recents;
   }
 
+//scoreFormat function returns readable dates from time the listing was posted
   function scoreFormat(num) {
     return num > 999 ? (num/1000).toFixed(1) + 'k' : num
   }
   
-  /**
-   * Return time since link was posted
-   * http://stackoverflow.com/a/3177838/477958
-  **/
   function timeSince(date) {
     var seconds = Math.floor(((new Date().getTime()/1000) - date))
 
@@ -151,7 +184,7 @@ $('#domainform, #leftform').on('submit', function (event){
   }
 
 
-  
+  //commentModal function displays top-level comments on the modal display box when comment button click event is clicked
   function commentModal(event){
    
      
@@ -169,7 +202,8 @@ $('#domainform, #leftform').on('submit', function (event){
      
      var commentURL = this.value+".json";
      
-  
+      
+  //getJSON for the comment thread
      $.getJSON(commentURL, function(result){
       
       
@@ -183,11 +217,12 @@ $('#domainform, #leftform').on('submit', function (event){
        }  
     )
  
+  //on close button click, fire the removeComments function
   closeButton.onclick = removeComments;
  
  }
   
-//Remove comments from modal container
+//Remove comments from modal container by removing all children items and replacing them with the newly selected thread
   function removeComments(event){
   
   
@@ -208,6 +243,7 @@ $('#domainform, #leftform').on('submit', function (event){
        }
   }
 
+//Removes all recent searches from local storage
 document.getElementById("clear-all-recents").addEventListener("click",function(){
      
   var list = document.getElementById("recent-searches");
