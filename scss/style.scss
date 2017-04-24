@@ -184,7 +184,6 @@ aside#menu-bar ul#recent-searches li span.recent-tags{
 
 aside#menu-bar button#clear-all-recents{
   border: none;
-  //border: 2px solid #ED4337;
   background: #fdd835;
   padding: 5px;
   color: black;
@@ -261,9 +260,6 @@ div#content img.thumbimg {
   transition: 0.4s; 
   float: left;
 }
-
-/*div#content img.thumbimg:hover {
-  width: 150px; }*/
 
 div#content li.listItem div.linkdetails{
   width: 300px;

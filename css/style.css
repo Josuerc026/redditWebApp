@@ -232,8 +232,6 @@ div#content img.thumbimg {
   transition: 0.4s;
   float: left; }
 
-/*div#content img.thumbimg:hover {
-  width: 150px; }*/
 div#content li.listItem div.linkdetails {
   width: 300px;
   display: inline-block;
